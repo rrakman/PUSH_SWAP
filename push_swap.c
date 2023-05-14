@@ -78,17 +78,20 @@ void err_duplicated(t_stack *stack)
 int	main(int ac,char **av)
 {
 	t_stack *stack;
-
+	
 	ft_input(ac,av);
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	stack->size_a = input_size(ac,av,stack);
 	stack->stack_a = (int *)malloc(sizeof(int) * (stack->size_a));
 	stack->stack_a = ft_make_stack(av,stack);
-	//stack_b = (int *)malloc(sizeof(int) * (stack_size));
+	stack->stack_b = (int *)malloc(sizeof(int) * (stack->size_b));
+	stack->size_b = 0;
 	err_duplicated(stack);
 	is_stack_sorted(stack);
-	ra(stack);
-	pa(stack);
+	if(stack->size_a == 2)
+		sort_2(stack);
+	else if(stack->size_a == 3)
+		sort_3(stack);
 	int i = 0;
 	while(stack->stack_a[i])
 	{

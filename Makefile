@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
-SRC = push_swap.c utils.c rules.c
+SRC = push_swap.c utils.c rules.c sort.c
 LIB = LIBFT
 
 OBJ = $(SRC:.c=.o)

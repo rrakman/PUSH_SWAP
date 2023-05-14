@@ -32,4 +32,7 @@ int     sa(t_stack *stack);
 int     ra(t_stack *stack);
 int     rra(t_stack *stack);
 
+void    sort_2(t_stack *stack);
+void    sort_3(t_stack *stack);
+
 # endif

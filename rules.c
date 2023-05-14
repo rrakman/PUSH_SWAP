@@ -9,6 +9,7 @@ int sa(t_stack *stack)
         tmp = stack->stack_a[0];
         stack->stack_a[0] = stack->stack_a[1];
         stack->stack_a[1] = tmp;
+        write(1,"sa\n",3);
     }
     return (1);
 }
@@ -28,6 +29,7 @@ int ra(t_stack *stack)
             i++;
         }
         stack->stack_a[i - 1] = tmp;
+        write(1,"ra\n",3);
     }
     return (1);
 }
@@ -54,54 +56,7 @@ int rra(t_stack *stack)
         }
         stack->stack_a[0] = tmp;
         stack->stack_a[len] = 0;
+        write(1,"rra\n",4);
     }
     return (1);
-}
-
-int *pa(t_stack *stack)
-{
-    int i;
-    int j;
-    int tmp;
-
-    i = 0;
-    j = 0;
-    if (stack->stack_b[0])
-    {
-        while (stack->stack_a[i])
-            i++;
-        tmp = stack->stack_b[0];
-        while (stack->stack_b[j])
-        {
-            stack->stack_b[j] = stack->stack_b[j + 1];
-            j++;
-        }
-        stack->stack_a[i] = tmp;
-        stack->stack_a[i + 1] = 0;
-    }
-    return (stack->stack_a);
-}
-
-int *pb(t_stack *stack)
-{
-    int i;
-    int j;
-    int tmp;
-
-    i = 0;
-    j = 0;
-    if (stack->stack_a[0])
-    {
-        while (stack->stack_b[i])
-            i++;
-        tmp = stack->stack_a[0];
-        while (stack->stack_a[j])
-        {
-            stack->stack_a[j] = stack->stack_a[j + 1];
-            j++;
-        }
-        stack->stack_b[i] = tmp;
-        stack->stack_b[i + 1] = 0;
-    }
-    return (stack->stack_b);
 }
