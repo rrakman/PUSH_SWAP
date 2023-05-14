@@ -38,7 +38,7 @@ void is_stack_sorted(t_stack *stack)
 	i = 0;
 	while(stack->stack_a[i])
 	{
-		if(stack->stack_a[i] < stack->stack_a[i + 1] && stack->stack_a[i + 1] != '\0')
+		if((stack->stack_a[i] < stack->stack_a[i + 1]) && (stack->stack_a[i] < stack->stack_a[i+2]) && (stack->stack_a[i + 2] != '\0'))
 			exit(0);
 		i++;
 	}

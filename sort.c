@@ -15,14 +15,27 @@ void    sort_3(t_stack *stack)
         sa(stack);
         rra(stack);
     }
-    else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2])
+    else if ((stack->stack_a[0] > stack->stack_a[1]) && (stack->stack_a[0] < stack->stack_a[2]) && (stack->stack_a[1] < stack->stack_a[2]))
         ra(stack);
-    else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] > stack->stack_a[2])
-    {
+    else if (stack->stack_a[0] < stack->stack_a[1] && (stack->stack_a[0] < stack->stack_a[2]) && stack->stack_a[1] > stack->stack_a[2])
         sa(stack);
-        ra(stack);
-    }
-    else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2])
+    else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] > stack->stack_a[2])
         rra(stack);
+    else
+        printf("hhh\n");
 }
+int find_maximum(t_stack *stack)
+{
+    int i;
+    int max;
 
+    i = 0;
+    max = stack->stack_a[0];
+    while (stack->stack_a[i])
+    {
+        if (stack->stack_a[i] > max)
+            max = stack->stack_a[i];
+        i++;
+    }
+    return (max);
+}

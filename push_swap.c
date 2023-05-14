@@ -74,11 +74,22 @@ void err_duplicated(t_stack *stack)
 		i++;
 	}
 }
+void ft_sort(t_stack *stack)
+{
+	if(stack->size_a == 2)
+		sort_2(stack);
+	else if(stack->size_a == 3)
+		sort_3(stack);
+	// else if(stack->size_a == 4)
+	// 	sort_4(stack);
+	// else if(stack->size_a == 5)
+	// 	sort_5(stack);
+}
 
 int	main(int ac,char **av)
 {
 	t_stack *stack;
-	
+	int i;
 	ft_input(ac,av);
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	stack->size_a = input_size(ac,av,stack);
@@ -88,14 +99,22 @@ int	main(int ac,char **av)
 	stack->size_b = 0;
 	err_duplicated(stack);
 	is_stack_sorted(stack);
-	if(stack->size_a == 2)
-		sort_2(stack);
-	else if(stack->size_a == 3)
-		sort_3(stack);
-	int i = 0;
+	ft_sort(stack);
+	i = 0;
+	write(1,"------ stack a ------\n",22);
 	while(stack->stack_a[i])
 	{
 		printf("%d\n",stack->stack_a[i]);
 		i++;
 	}
+	i = 0;
+	if(stack->size_b)
+		write(1,"------ stack b ------\n",22);
+	while(stack->stack_b[i])
+	{
+		printf("%d\n",stack->stack_b[i]);
+		i++;
+	}
+	printf("size_a = %d\n",stack->size_a);
+	printf("size_b = %d\n",stack->size_b);
 }
