@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int sa(t_stack *stack)
+void sa(t_stack *stack)
 {
     int tmp;
 
@@ -11,7 +11,6 @@ int sa(t_stack *stack)
         stack->stack_a[1] = tmp;
         write(1,"sa\n",3);
     }
-    return (1);
 }
 
 int sb(t_stack *stack)

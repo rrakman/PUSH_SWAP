@@ -56,6 +56,6 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 char	**ft_split(char const *s, char c);
-
+int	ft_atoi(const char *str);
 long long   ft_atol(const char *str);
 #endif

@@ -31,15 +31,17 @@ void	ft_input(int ac,char **av)
 	}	
 }
 
-void is_stack_sorted(t_stack *stack)
+int is_stack_sorted(t_stack *stack)
 {
 	int i;
 
 	i = 0;
-	while(stack->stack_a[i])
+	while(i < stack->size_a - 1)
 	{
-		if((stack->stack_a[i] < stack->stack_a[i + 1]) && (stack->stack_a[i] < stack->stack_a[i+2]) && (stack->stack_a[i + 2] != '\0'))
-			exit(0);
-		i++;
+		if(stack->stack_a[i] < stack->stack_a[i + 1])
+			i++;
+		else
+			return (0);
 	}
+	return (1);
 }
