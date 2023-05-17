@@ -14,7 +14,7 @@ void	ft_input(int ac,char **av)
 	
 	j = 0;
 	if (ac < 2)
-		exit (-1);
+		exit (1);
 	while(++j < ac)
 	{
 		if(ft_strlen(av[j]) == 0)

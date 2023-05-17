@@ -8,19 +8,22 @@ void    sort_2(t_stack *stack)
 
 void    sort_3(t_stack *stack)
 {
-    if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[0] < stack->stack_a[2])
-        sa(stack);
-    else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[1] > stack->stack_a[2])
+    if (stack->stack_a[2] < stack->stack_a[1] && stack->stack_a[0] < stack->stack_a[2] && stack->stack_a[0] < stack->stack_a[1])
     {
-        sa(stack);
         rra(stack);
+        sa(stack);
     }
-    else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2])
-        ra(stack);
-    else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] > stack->stack_a[2] && stack->stack_a[0] < stack->stack_a[2])
+    else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2] && stack->stack_a[0] < stack->stack_a[2])
         sa(stack);
     else if (stack->stack_a[0] < stack->stack_a[1] && stack->stack_a[1] > stack->stack_a[2] && stack->stack_a[0] > stack->stack_a[2])
         rra(stack);
+    else if (stack->stack_a[0] > stack->stack_a[1] && stack->stack_a[1] < stack->stack_a[2] && stack->stack_a[0] > stack->stack_a[2])
+        ra(stack);
+    else
+    {
+        ra(stack);
+        sa(stack);
+    }
 }
 
 int find_smallest_number(t_stack *stack)
@@ -32,7 +35,7 @@ int find_smallest_number(t_stack *stack)
     smallest = stack->stack_a[0];
     while (i < stack->size_a)
     {
-        if (stack->stack_a[i] < smallest)
+        if (stack->stack_a[i] <= smallest)
             smallest = stack->stack_a[i];
         i++;
     }
@@ -46,22 +49,26 @@ void sort_4(t_stack *stack)
     while (stack->stack_a[0] != stack->smallest)
         ra(stack);
     pb(stack);
-    sort_3(stack);
-    pa(stack);  
+    if (!is_stack_sorted(stack))
+    {
+        sort_3(stack);
+    }
+    pa(stack);
 }
 
 void sort_5(t_stack *stack)
 {
     int i = find_smallest_number(stack);
-    while (stack->stack_a[0] != stack->smallest)
-    {   
+    while (stack->stack_a[0] == i)
+    {
         if (i > (stack->size_a / 2))
             rra(stack);
         else
             ra(stack);
     }
     pb(stack);
-    sort_4(stack);
+    if (!is_stack_sorted(stack))
+        sort_4(stack);
     pa(stack);
 }
 

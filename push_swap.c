@@ -22,7 +22,7 @@ int *ft_make_stack(char **av,t_stack *stack)
 	i = 0;
 	while(str[i])
 	{
-		stack->stack_a[i] = (ft_atol(str[i]) + 1);
+		stack->stack_a[i] = (ft_atol(str[i]));
 		i++;
 	}
 	free(str);
@@ -101,29 +101,23 @@ int	main(int ac,char **av)
 	err_duplicated(stack);
 	if (is_stack_sorted(stack))
 		exit(0);
+
 	ft_sort(stack);
 	i = 0;
-	stack->cpy = (int *)malloc(sizeof(int) * (stack->size_a));
-	bubble_sort(stack);
+	write(1,"------ stack a ------\n",22);
 	while(i < stack->size_a)
 	{
-		printf("%d\n",stack->cpy[i] - 1);
+		printf("%d\n",stack->stack_a[i]);
 		i++;
 	}
-	// write(1,"------ stack a ------\n",22);
-	// while(i < stack->size_a)
-	// {
-	// 	printf("%d\n",stack->stack_a[i]-1);
-	// 	i++;
-	// }
-	// i = 0;
-	// if(stack->size_b)
-	// 	write(1,"------ stack b ------\n",22);
-	// while(i < stack->size_b)
-	// {
-	// 	printf("%d\n",stack->stack_b[i]);
-	// 	i++;
-	// }
-	// printf("size_a = %d\n",stack->size_a);
-	// printf("size_b = %d\n",stack->size_b);
+	i = 0;
+	if(stack->size_b)
+		write(1,"------ stack b ------\n",22);
+	while(i < stack->size_b)
+	{
+		printf("%d\n",stack->stack_b[i]);
+		i++;
+	}
+	printf("size_a = %d\n",stack->size_a);
+	printf("size_b = %d\n",stack->size_b);
 }
