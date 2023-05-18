@@ -140,7 +140,29 @@ int rr(t_stack *stack)
     return(1);
 }
 
-void pa(t_stack *stack)
+// void pa(t_stack *stack)
+// {
+//     int i;
+
+//     i = 0;
+//     if (stack->size_b != 0)
+//     {
+//         i = stack->size_a - 1;
+//         stack->size_a++;
+//         while (i >= 0)
+//         {
+//             int temp = stack->stack_a[i];
+//             stack->stack_a[i + 1] = temp;
+//             stack->stack_a[i] = stack->stack_a[i - 1];
+//             i--;
+//         }
+//         stack->stack_a[0] = stack->stack_b[stack->size_b - 1];
+//         stack->size_b--;
+//         write(1,"pa\n",3);
+//     }
+// }
+
+int pa(t_stack *stack)
 {
     int i;
     int j;
@@ -149,32 +171,25 @@ void pa(t_stack *stack)
     j = 0;
     if (stack->size_b != 0)
     {
-        i = stack->size_a - 1;
-        stack->size_a++;
-        while (i >= 0)
+        while (i < stack->size_a)
+            i++;
+        while (i > 0)
         {
-            int temp = stack->stack_a[i];
-            stack->stack_a[i + 1] = temp;
             stack->stack_a[i] = stack->stack_a[i - 1];
             i--;
         }
-        
-        stack->stack_a[0] = stack->stack_b[stack->size_b - 1];
-        // while (j < stack->size_b)
-        // {
-        //     stack->stack_b[j] = stack->stack_b[j + 1];
-        //     j++;
-        // } 
-        // stack->stack_b[j - 1] = stack->stack_b[j];
-        // stack->size_a++;
+        stack->stack_a[0] = stack->stack_b[0];
+        while (j < stack->size_b)
+        {
+            stack->stack_b[j] = stack->stack_b[j + 1];
+            j++;
+        }
+        stack->stack_b[j - 1] = 0;
         stack->size_b--;
+        stack->size_a++;
         write(1,"pa\n",3);
     }
-    // for (int k = 0; k < 4; k++)
-    // {
-    //     printf("%d\n", stack->stack_a[k]);
-    // }
-    // exit(0);
+    return (1);
 }
 
 int pb(t_stack *stack)

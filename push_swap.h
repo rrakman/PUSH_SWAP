@@ -42,13 +42,14 @@ int		rrb(t_stack *stack);
 int 	rr(t_stack *stack);
 int		rrr(t_stack *stack);
 
-void     pa(t_stack *stack);
+int     pa(t_stack *stack);
 int     pb(t_stack *stack);
 
 void    sort_2(t_stack *stack);
 void    sort_3(t_stack *stack);
 void    sort_4(t_stack *stack);
 void    sort_5(t_stack *stack);
+void sort_100(t_stack *stack);
 
 void bubble_sort(t_stack *stack);
 void stack_cpy(t_stack *stack);
