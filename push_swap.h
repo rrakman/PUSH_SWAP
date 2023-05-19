@@ -17,9 +17,6 @@ typedef struct s_stack
 	int size_b;
 	int smallest;
 	int *cpy;
-	int top_a;
-	int top_b;
-
 }t_stack;
 
 

@@ -67,8 +67,8 @@ void sort_4(t_stack *stack)
 void sort_5(t_stack *stack)
 {
     int i = find_smallest_number(stack);
-    printf("i = %d\n", i);
-    printf("stack smallest = %d\n", stack->smallest);
+    // printf("i = %d\n", i);
+    // printf("stack smallest = %d\n", stack->smallest);
 
     while (stack->stack_a[0] != stack->smallest)
     {
@@ -103,7 +103,6 @@ void stack_cpy(t_stack *stack)
     while (i < stack->size_a)
     {
         stack->cpy[i] = stack->stack_a[i];
-        // printf("stack->cpy[%d] = %d\n", i, stack->cpy[i]-1);
         i++;
     }
 }
@@ -133,47 +132,80 @@ void bubble_sort(t_stack *stack)
     }
 }
 
-// int is_in_range(int num, t_stack *stack, int range, int range2)
-// {
-//     while (range <= range2)
-//     {
-//         if (stack->stack_a[range] == num || stack->stack_a[range2] == num)
-//             return (1);
-//         range++;
-//     }
-//     return (0);
-// }
-
-int is_after(int num, t_stack *stack, int range)
+int find_maximum(t_stack* stack)
 {
-    while (range <= stack->size_a)
+    int i = 0;
+    int max = stack->stack_b[0];
+    while (i < stack->size_b)
     {
-        if (stack->cpy[range] == num)
-            return (1);
-        range++;
+        if (stack->stack_b[i] > max)
+            max = stack->stack_b[i];
+        i++;
     }
-    return (0);
+    return max;
 }
 
-// int is_before(int num, t_stack *stack, int range)
-// {
-//     while (range >= 0)
-//     {
-//         if (stack->cpy[range] == num)
-//             return (1);
-//         range--;
-//     }
-//     return (0);
-// }
+int get_index(t_stack *stack, int num)
+{
+    int i;
+
+    i = 0;
+    while (i < stack->size_a)
+    {
+        if (stack->cpy[i] == num)
+            return i;
+        i++;
+    }
+    return -1;
+}
+
+int up_or_down(t_stack *stack, int num)
+{
+    if (get_index(stack, num) > stack->size_b / 2)
+        return 1;
+    return 0;
+}
+
+void move_elem_to_top(t_stack *stack, int num)
+{
+    if (up_or_down(stack, num) == 1)
+    {
+        while (stack->stack_b[0] != num)
+            rb(stack);
+    }
+    else
+    {
+        while (stack->stack_b[0] != num)
+            rrb(stack);
+    }
+}
 
 void sort_100(t_stack *stack)
 {
     bubble_sort(stack);
-    int i = 0;
-    while (i < stack->size_a)
+    int f_range = 0;
+    int s_range = 16;
+    while (stack->size_a > 0)
     {
-        printf("cpy[%d] = %d\n", i,stack->cpy[i]);
-        i++;
+        if (get_index(stack,stack->stack_a[0]) >= f_range && get_index(stack,stack->stack_a[0]) <= s_range)
+        {
+            pb(stack);
+            f_range++;
+            s_range++;
+        }
+        else if (get_index(stack,stack->stack_a[0]) < f_range)
+        {
+            pb(stack);
+            rb(stack);
+            f_range++;
+            s_range++;
+        }
+        else
+            ra(stack);
     }
-    printf("res %d\n",is_after(stack->stack_a[0], stack, 15));
+    while (stack->size_b)
+    {
+        move_elem_to_top(stack, find_maximum(stack));
+        pa(stack);
+    }
 }
