@@ -41,17 +41,14 @@ void ra(t_stack *stack)
     int i;
 
     i = 0;
-    // if (stack->stack_a[0])
-    // {
-        tmp = stack->stack_a[0];
-        while (i < stack->size_a)
-        {
-            stack->stack_a[i] = stack->stack_a[i + 1];
-			i++;
-        }
-        stack->stack_a[i - 1] = tmp;
-        write(1,"ra\n",3);
-    // }
+    tmp = stack->stack_a[0];
+    while (i < stack->size_a)
+    {
+        stack->stack_a[i] = stack->stack_a[i + 1];
+		i++;
+    }
+    stack->stack_a[i - 1] = tmp;
+    write(1,"ra\n",3);
 }
 
 int rb(t_stack *stack)
