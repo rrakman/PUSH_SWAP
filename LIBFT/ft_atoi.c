@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 13:55:44 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/08 19:34:00 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/21 16:45:25 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_isspace(char c)
 
 int	ft_atoi(const char *str)
 {
-	int			i;
+	int		i;
 	int		res;
 	int		sign;
 
@@ -44,6 +44,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if ((sign * res) >= INT_MAX || (sign * res) <= INT_MIN)
-			ft_error();
+		ft_error();
 	return (sign * res);
 }

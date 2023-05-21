@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 13:55:44 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/08 19:34:00 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/21 17:41:49 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,32 @@ static int	ft_isspace(char c)
 		return (0);
 }
 
+int	ft_process_sign(const char *str, int index)
+{
+	int	sign;
+
+	sign = 1;
+	if (str[index] == '+' || str[index] == '-')
+	{
+		if (str[index] == '-')
+			sign = -1;
+		index++;
+	}
+	return (sign);
+}
+
+int	ft_skip_sign(const char *str, int index)
+{
+	if (str[index] == '+' || str[index] == '-')
+	{
+		index++;
+	}
+	return (index);
+}
+
 long long	ft_atol(const char *str)
 {
-	int			i;
+	int				i;
 	long long		res;
 	long long		sign;
 
@@ -32,18 +55,18 @@ long long	ft_atol(const char *str)
 	res = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
+	sign = ft_process_sign(str, i);
+	i = ft_skip_sign(str, i);
 	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + (str[i] - '0');
+		if (res == 2147483648 && sign == -1)
+			return (res * sign);
+		if (res > 2147483647)
+			ft_error();
 		i++;
 	}
 	if ((sign * res) >= INT_MAX || (sign * res) <= INT_MIN)
-			ft_error();
+		ft_error();
 	return (sign * res);
 }

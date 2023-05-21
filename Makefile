@@ -1,23 +1,17 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
-SRC = push_swap.c utils.c rules.c sort.c
+SRC = push_swap.c utils.c rules.c rules2.c rules3.c sort.c sort2.c sort3.c 
 LIB = LIBFT
-
-OBJ = $(SRC:.c=.o)
+HEADER = push_swap.h
 
 all: $(NAME)
-	@echo "all done"
 
-$(NAME): $(OBJ)
+$(NAME):${SRC} ${HEADER}
 	@make -C $(LIB)
-	@$(CC) $(CFLAGS) $(OBJ) -L$(LIB) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) ${SRC} -L$(LIB) -lft -o $(NAME)
 	
-$(OBJ):
-	@$(CC) $(CFLAGS) -c $(SRC)
-
 clean:
-	@rm -rf $(OBJ)
 	@make clean -C $(LIB)
 	@echo "OBJ deleted"
 
