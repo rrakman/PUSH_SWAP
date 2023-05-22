@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:54:46 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/21 17:30:30 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/22 20:15:43 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,8 @@ int	main(int ac, char **av)
 	if (is_stack_sorted(stack))
 		exit(0);
 	ft_sort(stack);
+	free(stack->stack_a);
+	free(stack->stack_b);
+	free(stack);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:14:06 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/21 14:14:18 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/22 19:43:52 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ char	*concatenate_strings(char **av)
 	char	*s;
 	int		i;
 
-	s = "";
+	s = NULL;
 	i = 1;
 	while (av[i])
 	{
-		s = ft_strjoin(s, av[i]);
-		s = ft_strjoin(s, " ");
+		s = ft_strjoin(s, ft_strdup(av[i]));
+		s = ft_strjoin(s, ft_strdup(" "));
 		i++;
 	}
 	return (s);
@@ -85,6 +85,12 @@ int	*convert_strings_to_integers(char *s, t_stack *stack)
 	while (str[i])
 	{
 		stack->stack_a[i] = ft_atol(str[i]);
+		i++;
+	}
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
 		i++;
 	}
 	free(str);

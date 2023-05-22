@@ -6,27 +6,46 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 01:44:29 by rrakman           #+#    #+#             */
-/*   Updated: 2022/10/07 16:48:16 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/22 20:14:50 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_norm_lol(char *s1, char *s2, char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (s1)
+	{
+		while (s1[i])
+		{
+			str[i] = s1[i];
+			i++;
+		}
+		free (s1);
+	}
+	while (s2[j])
+	{
+		str[i++] = s2[j++];
+	}
+	str[i] = 0;
+}
+
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	size_t	maxl;
 
-	if (!s2)
-		return (NULL);
-	maxl = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(maxl + 1);
+	if (s1)
+		str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	else
+		str = malloc(ft_strlen(s2) + 1);
 	if (!str)
 		return (0);
-	while (*s1)
-		*str++ = *s1++;
-	while (*s2)
-		*str++ = *s2++;
-	*str = '\0';
-	return (str - maxl);
+	ft_norm_lol(s1, s2, str);
+	free(s2);
+	return (str);
 }

@@ -6,7 +6,7 @@
 #    By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 18:40:15 by rrakman           #+#    #+#              #
-#    Updated: 2022/10/15 16:51:01 by rrakman          ###   ########.fr        #
+#    Updated: 2023/05/22 16:18:40 by rrakman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 	@echo "all done"
-
+	
 $(NAME):
 	@$(CC)  $(CFLAGS) -c $(SRC)
 	@ar rc $(NAME) $(OBJ)

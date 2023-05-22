@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 12:49:13 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/20 19:52:51 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/22 12:45:24 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char		*ft_strrchr(const char *s, int c);
 char		*ft_strdup(const char *s1);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strtrim(char const *s1, char const *set);
