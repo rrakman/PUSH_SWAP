@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 13:55:44 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/21 17:41:49 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:27:09 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ long long	ft_atol(const char *str)
 			ft_error();
 		i++;
 	}
-	if ((sign * res) >= INT_MAX || (sign * res) <= INT_MIN)
+	if ((sign * res) > INT_MAX || (sign * res) < INT_MIN)
 		ft_error();
 	return (sign * res);
 }

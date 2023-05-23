@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:43:47 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/21 16:29:50 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:25:38 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
-# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
