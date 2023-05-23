@@ -6,13 +6,13 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:14:06 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/23 20:28:09 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:47:57 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error()
+void	ft_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
