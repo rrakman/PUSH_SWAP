@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:59:56 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/23 20:49:18 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:23:23 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,74 @@ int	rrb(t_stack *stack)
 
 int	rr(t_stack *stack)
 {
-	ra(stack);
-	rb(stack);
+	int	tmp;
+	int	i;
+
+	i = 0;
+	tmp = stack->stack_a[0];
+	while (i < stack->size_a)
+	{
+		stack->stack_a[i] = stack->stack_a[i + 1];
+		i++;
+	}
+	stack->stack_a[i - 1] = tmp;
+	i = 0;
+	tmp = stack->stack_a[0];
+	while (i < stack->size_a)
+	{
+		stack->stack_a[i] = stack->stack_a[i + 1];
+		i++;
+	}
+	stack->stack_a[i - 1] = tmp;
 	write(1, "rr\n", 3);
 	return (1);
 }
 
+void	rrb_rrr(t_stack *stack)
+{
+	int	tmp;
+	int	i;
+	int	len;
+
+	len = 0;
+	i = 0;
+	while (i < stack->size_b)
+	{
+		i++;
+		len++;
+	}
+	tmp = stack->stack_b[len - 1];
+	while (i > 0)
+	{
+		stack->stack_b[i] = stack->stack_b[i - 1];
+		i--;
+	}
+	stack->stack_b[0] = tmp;
+	stack->stack_b[len] = 0;
+}
+
 int	rrr(t_stack *stack)
 {
-	rra(stack);
-	rrb(stack);
+	int	tmp;
+	int	i;
+	int	len;
+
+	len = 0;
+	i = 0;
+	while (i < stack->size_a)
+	{
+		i++;
+		len++;
+	}
+	tmp = stack->stack_a[len - 1];
+	while (i >= 0)
+	{
+			stack->stack_a[i] = stack->stack_a[i - 1];
+			i--;
+	}
+	stack->stack_a[0] = tmp;
+	stack->stack_a[len] = 0;
+	rrb_rrr(stack);
 	write(1, "rrr\n", 4);
 	return (1);
 }

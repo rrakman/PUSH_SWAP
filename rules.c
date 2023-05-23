@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:49:51 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/21 14:12:18 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/23 22:16:28 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ int	sb(t_stack *stack)
 
 int	ss(t_stack *stack)
 {
-	sa(stack);
-	sb(stack);
+	int	tmp;
+
+	tmp = stack->stack_a[0];
+	stack->stack_a[0] = stack->stack_a[1];
+	stack->stack_a[1] = tmp;
+	tmp = stack->stack_b[0];
+	stack->stack_b[0] = stack->stack_b[1];
+	stack->stack_b[1] = tmp;
 	write(1, "ss\n", 3);
 	return (1);
 }
