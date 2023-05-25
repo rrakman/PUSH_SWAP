@@ -6,7 +6,7 @@
 /*   By: rrakman <rrakman@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 19:54:46 by rrakman           #+#    #+#             */
-/*   Updated: 2023/05/23 22:27:10 by rrakman          ###   ########.fr       */
+/*   Updated: 2023/05/25 18:03:34 by rrakman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	input_size(int ac, char **av, t_stack *stack)
 		{
 			if (av[j][i] == '+' || av[j][i] == '-')
 				i++;
+			if (!ft_isdigit(av[j][i]))
+				ft_error();
 			if (ft_isdigit(av[j][i]))
 				stack->size_a++;
 			else if (av[j][i] != ' ' && av[j][i] != '\t')
